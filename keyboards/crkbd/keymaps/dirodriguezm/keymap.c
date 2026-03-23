@@ -47,7 +47,7 @@ enum keycode_aliases {
   HRM_NTIL = LALT_T(ES_NTIL),
   HRM_M = RCTL_T(ES_M),
   HRM_DOT = LT(WIN, ES_DOT),
-  HRM_MINS = RGUI_T(ES_MINS),
+  HRM_QUOT = RGUI_T(ES_QUOT),
 
   EXT_COL = LT(EXT, ES_COLN),
   NAV_EQL = LT(NAV, ES_EQL),
@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC,    HRM_A,   HRM_S,   HRM_D,   HRM_F,   ES_G,                         ES_H,    HRM_J,   HRM_K,   HRM_L,  HRM_NTIL, KC_ENT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      EXT_COL,    HRM_Z,   ES_X,    ES_C,    HRM_V,   ES_B,                         ES_N,    HRM_M,   MAGIC, HRM_DOT, ES_QUOT,  KC_RALT,
+      EXT_COL,    HRM_Z,   ES_X,    ES_C,    HRM_V,   ES_B,                         ES_N,    HRM_M,   MAGIC, HRM_DOT, HRM_QUOT,  KC_RALT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           CW_TOGG,   ES_UNDS,  KC_SPC,     QK_REP,   KC_ESC, QK_AREP
                                       //`--------------------------'  `--------------------------'
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, ES_GRV, ES_LABK, ES_RABK, ES_MINS, ES_PIPE,                        ES_CIRC, ES_LCBR, ES_RCBR, ES_DLR,  ES_QUES, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, ES_EXLM, ES_ASTR, ES_SLSH, NAV_EQL, ES_AMPR,                        ES_NUMB, ES_LPRN, ES_RPRN, ES_SCLN, ES_DQUO, XXXXXXX,
+      XXXXXXX, ES_EXLM, ES_ASTR, ES_SLSH, ES_EQL, ES_AMPR,                        ES_NUMB, ES_LPRN, ES_RPRN, ES_SCLN, ES_DQUO, KC_ENT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, ES_TILD, ES_PLUS, ES_LBRC, ES_RBRC, ES_PERC,                       ES_AT,   ES_COLN, ES_COMM, ES_DOT,  ES_QUOT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -101,11 +101,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PGUP, KC_HOME, KC_UP,   KC_END,   XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, KC_LALT, XXXXXXX, KC_LSFT, XXXXXXX, XXXXXXX,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, XXXXXXX,
+      XXXXXXX, KC_LALT, XXXXXXX, KC_LSFT, XXXXXXX, XXXXXXX,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, KC_ENT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, KC_LGUI, XXXXXXX, XXXXXXX, KC_LCTL, XXXXXXX,                      XXXXXXX, SELWBAK, SELLINE, SELWORD,  XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX,   XXXXXXX,  XXXXXXX,     XXXXXXX, QK_LLCK, XXXXXXX
+                                          XXXXXXX,   XXXXXXX,  KC_SPC,     XXXXXXX, QK_LLCK, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, ES_SLSH, ES_9, ES_8, ES_7, ES_ASTR,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, ES_MINS, ES_3, ES_2, ES_1, ES_PLUS,                              XXXXXXX, XXXXXXX, KC_RSFT, XXXXXXX, KC_LALT, XXXXXXX,
+      XXXXXXX, ES_MINS, ES_3, ES_2, ES_1, ES_PLUS,                              XXXXXXX, XXXXXXX, KC_RSFT, XXXXXXX, KC_LALT, KC_ENT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX, XXXXXXX, ES_6, ES_5, ES_4, ES_PERC,                              XXXXXXX, KC_RCTL, XXXXXXX, XXXXXXX, KC_RGUI, KC_RALT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -123,11 +123,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [WIN] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      UG_SATU, UG_NEXT, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, G(ES_3), G(ES_2), G(ES_1), XXXXXXX,                     XXXXXXX, XXXXXXX, KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, UG_HUEU, G(ES_3), G(ES_2), G(ES_1), XXXXXXX,                     XXXXXXX, XXXXXXX, KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, G(ES_6), G(ES_5), G(ES_4), XXXXXXX,                     XXXXXXX, S(A(KC_TAB)), A(KC_TAB), XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, UG_TOGG, G(ES_6), G(ES_5), G(ES_4), XXXXXXX,                     XXXXXXX, S(A(KC_TAB)), A(KC_TAB), XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, KC_MPLY,  G(KC_SPC),     XXXXXXX, XXXXXXX, XXXXXXX
                                       //`--------------------------'  `--------------------------'
@@ -173,8 +173,8 @@ bool caps_word_press_user(uint16_t keycode) {
     case ES_1 ... ES_0:
     case KC_BSPC:
     case KC_DEL:
-    case KC_UNDS:
-    case KC_COLN:
+    case ES_UNDS:
+    case ES_COLN:
     case M_THE:
     case M_ION:
     case M_MENT:

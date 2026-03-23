@@ -46,8 +46,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define QUICK_TAP_TERM 0
 #define PERMISSIVE_HOLD
 #define SPECULATIVE_HOLD
-#define FLOW_TAP_TERM 150
-#define CHORDAL_HOLD
 #define DUMMY_MOD_NEUTRALIZER_KEYCODE KC_RCTL
 #define MODS_TO_NEUTRALIZE \
   { MOD_BIT(KC_LALT), MOD_BIT(KC_LGUI), MOD_BIT(KC_RGUI) }
