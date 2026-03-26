@@ -27,29 +27,20 @@ enum layers {
   NUM,
   WIN,
   FUN,
-  EXT,
 };
 
 enum keycode_aliases {
   // The "magic" key is the Alternate Repeat Key.
   MAGIC = QK_AREP,
   // Short aliases for home row mods and other tap-hold keys.
-  HRM_A = LALT_T(ES_A),
-  HRM_S = LT(SYM, ES_S),
-  HRM_D = LSFT_T(ES_D),
-  HRM_F = LT(NAV, ES_F),
-  HRM_V = LCTL_T(ES_V),
   HRM_Z = LGUI_T(ES_Z),
+  HRM_X = LALT_T(ES_X),
+  HRM_C = LCTL_T(ES_C),
 
-  HRM_J = LT(NUM, ES_J),
-  HRM_K = RSFT_T(ES_K),
-  HRM_L = LT(SYM, ES_L),
-  HRM_NTIL = LALT_T(ES_NTIL),
   HRM_M = RCTL_T(ES_M),
+  HRM_COM = LALT_T(ES_COMM),
   HRM_DOT = LT(WIN, ES_DOT),
-  HRM_QUOT = RGUI_T(ES_QUOT),
 
-  EXT_COL = LT(EXT, ES_COLN),
   NAV_EQL = LT(NAV, ES_EQL),
 };
 
@@ -74,24 +65,24 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    ES_Q,    ES_W,    ES_E,    ES_R,    ES_T,                         ES_Y,    ES_U,    ES_I,    ES_O,   ES_P,  ES_ACUT,
+      KC_TAB,  ES_Q,    ES_W,    ES_E,    ES_R,    ES_T,                         ES_Y,    ES_U,    ES_I,    ES_O,   ES_P,     ES_ACUT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_BSPC,    HRM_A,   HRM_S,   HRM_D,   HRM_F,   ES_G,                         ES_H,    HRM_J,   HRM_K,   HRM_L,  HRM_NTIL, KC_ENT,
+      OSL(SYM), ES_A,   ES_S,   ES_D,   ES_F,      ES_G,                         ES_H,    ES_J,    ES_K,    ES_L,   ES_B,   OSL(SYM),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      EXT_COL,    HRM_Z,   ES_X,    ES_C,    HRM_V,   ES_B,                         ES_N,    HRM_M,   MAGIC, HRM_DOT, HRM_QUOT,  KC_RALT,
+      ES_NTIL, OS_LSFT, HRM_Z,  HRM_X,   HRM_C,   ES_V,                          ES_N,    HRM_M,   HRM_COM, HRM_DOT, OS_RSFT, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          CW_TOGG,   ES_UNDS,  KC_SPC,     QK_REP,   KC_ESC, QK_AREP
+                                   CW_TOGG,   ES_UNDS,  LT(NAV,KC_SPC),     QK_REP,   KC_ESC, QK_AREP
                                       //`--------------------------'  `--------------------------'
 
   ),
 
     [SYM] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, ES_GRV, ES_LABK, ES_RABK, ES_MINS, ES_PIPE,                        ES_CIRC, ES_LCBR, ES_RCBR, ES_DLR,  ES_QUES, XXXXXXX,
+      KC_TAB, ES_GRV, ES_LABK, ES_RABK, ES_MINS, ES_PIPE,                        ES_CIRC, ES_LCBR, ES_RCBR, ES_DLR,  ES_QUES, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, ES_EXLM, ES_ASTR, ES_SLSH, ES_EQL, ES_AMPR,                        ES_NUMB, ES_LPRN, ES_RPRN, ES_SCLN, ES_DQUO, KC_ENT,
+      XXXXXXX, ES_EXLM, ES_ASTR, ES_SLSH, ES_EQL, ES_AMPR,                        ES_NUMB, ES_LPRN, ES_RPRN, ES_SCLN, ES_DQUO, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, ES_TILD, ES_PLUS, ES_LBRC, ES_RBRC, ES_PERC,                       ES_AT,   ES_COLN, ES_COMM, ES_DOT,  ES_QUOT, XXXXXXX,
+      XXXXXXX, ES_TILD, ES_PLUS, ES_LBRC, ES_RBRC, ES_PERC,                       ES_AT,   ES_COLN, ES_COMM, ES_DOT,  ES_QUOT, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, XXXXXXX,  KC_SPC,     QK_REP,  KC_ESC, QK_AREP
                                       //`--------------------------'  `--------------------------'
@@ -99,13 +90,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [NAV] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PGUP, KC_HOME, KC_UP,   KC_END,   XXXXXXX, XXXXXXX,
+      KC_TAB, LCTL(ES_Q), LCTL(ES_W), XXXXXXX, XXXXXXX, XXXXXXX,                 KC_PGUP, KC_HOME, KC_UP,   KC_END,   KC_DEL, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, KC_LALT, XXXXXXX, KC_LSFT, XXXXXXX, XXXXXXX,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, KC_ENT,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, KC_BSPC, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, KC_LGUI, XXXXXXX, XXXXXXX, KC_LCTL, XXXXXXX,                      XXXXXXX, SELWBAK, SELLINE, SELWORD,  XXXXXXX, XXXXXXX,
+      XXXXXXX, KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, XXXXXXX,                      XXXXXXX, SELWBAK, SELLINE, SELWORD,  KC_RSFT, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX,   XXXXXXX,  KC_SPC,     XXXXXXX, QK_LLCK, XXXXXXX
+                                          XXXXXXX,   XXXXXXX,  XXXXXXX,     QK_REP, QK_LLCK, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -113,9 +104,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, ES_SLSH, ES_9, ES_8, ES_7, ES_ASTR,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, ES_MINS, ES_3, ES_2, ES_1, ES_PLUS,                              XXXXXXX, XXXXXXX, KC_RSFT, XXXXXXX, KC_LALT, KC_ENT,
+      XXXXXXX, ES_MINS, ES_3, ES_2, ES_1, ES_PLUS,                              XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, ES_6, ES_5, ES_4, ES_PERC,                              XXXXXXX, KC_RCTL, XXXXXXX, XXXXXXX, KC_RGUI, KC_RALT,
+      XXXXXXX, ES_DOT, ES_6, ES_5, ES_4, ES_PERC,                               XXXXXXX, KC_RCTL,  KC_LALT, KC_RGUI, KC_RSFT, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX, ES_UNDS,  KC_SPC,     ES_0, QK_LLCK, XXXXXXX
                                       //`--------------------------'  `--------------------------'
@@ -144,18 +135,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           XXXXXXX, XXXXXXX,  KC_SPC,     XXXXXXX, XXXXXXX, XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
-
-    [EXT] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, C(ES_V), C(ES_A), C(ES_C), C(ES_X),                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, XXXXXXX,  XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX
-                                      //`--------------------------'  `--------------------------'
-  )
 };
 
 ///////////////////////////////////////////////////////////////////////////////
